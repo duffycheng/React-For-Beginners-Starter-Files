@@ -4,6 +4,7 @@
         // won't let people delete an existing room
         ".write": "!data.exists()",
         ".read": true,
+        // individual store
         "$room" : {
           // only the store owner can edit the data
           ".write" : "newData.child('owner').val() === auth.uid",
