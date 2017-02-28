@@ -8,9 +8,12 @@ import App from './components/App';
 import StorePicker from './components/StorePicker';
 import NotFound from './components/NotFound';
 
+// GitHub static page 要加上 repo name 到 router basename, local開發則不用
+const repo = (window.location.hostname.split(".")[1] === 'github') ? `/${window.location.pathname.split('/')[1]}`:"";
+
 const Root = () => {
  return(
-    <BrowserRouter>
+    <BrowserRouter basename={repo}>
         <div>
             <Match exactly pattern="/" component={StorePicker} />
             <Match exactly pattern="/store/:storeId" component={App} />
